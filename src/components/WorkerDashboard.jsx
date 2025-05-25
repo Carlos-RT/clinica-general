@@ -23,7 +23,7 @@ const WorkerDashboard = () => {
     const obtenerCitasAsignadas = async () => {
       if (usuario?.id) {
         try {
-          const res = await axios.get(`http://localhost:5000/api/asignadas/${usuario.id}`);
+          const res = await axios.get(`https://back-clinica-general.vercel.app/api/asignadas/${usuario.id}`);
           // Solo mostrar las que no han sido atendidas
           setCitasAsignadas(res.data.filter(cita => !cita.atendida));
         } catch (error) {
@@ -47,7 +47,7 @@ const WorkerDashboard = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/citas/tratamiento', {
+      await axios.post('https://back-clinica-general.vercel.app/api/citas/tratamiento', {
         citaId: citaSeleccionada._id,
         tratamiento,
       });
