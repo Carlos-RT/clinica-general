@@ -23,7 +23,7 @@ const UserDashboard = () => {
     const fetchTratamientos = async () => {
       if (usuario?.id) {
         try {
-          const res = await axios.get(`http://localhost:5000/api/tratamientos/${usuario.id}`);
+          const res = await axios.get(`https://back-clinica-general.vercel.app/api/tratamientos/${usuario.id}`);
           setTratamientos(res.data);
         } catch (error) {
           console.error('Error al obtener tratamientos:', error);
@@ -50,7 +50,7 @@ const UserDashboard = () => {
     if (!usuario) return;
 
     try {
-      await axios.post('http://localhost:5000/api/citas', {
+      await axios.post('https://back-clinica-general.vercel.app/api/citas', {
         usuarioId: usuario.id,
         enfermedades,
         tipoCita: modalidad,
