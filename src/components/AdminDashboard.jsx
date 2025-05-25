@@ -15,8 +15,8 @@ const AdminDashboard = () => {
     const fetchData = async () => {
       try {
         const [resCitas, resMedicos] = await Promise.all([
-          axios.get('http://localhost:5000/api/todaslascitas'),
-          axios.get('http://localhost:5000/api/medicos')
+          axios.get('https://back-clinica-general.vercel.app/api/todaslascitas'),
+          axios.get('https://back-clinica-general.vercel.app/api/medicos')
         ]);
         setCitas(resCitas.data);
         setMedicos(resMedicos.data);
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/asignar-medico', {
+      await axios.post('https://back-clinica-general.vercel.app/api/asignar-medico', {
         citaIds: citasSeleccionadas,
         medicoId: medicoSeleccionado
       });
