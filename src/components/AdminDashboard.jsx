@@ -40,10 +40,10 @@ const AdminDashboard = () => {
         medicoId: medicoSeleccionado
       });
 
-      // Actualizar citas en el frontend
       const citasActualizadas = citas.map(cita => {
         if (citasSeleccionadas.includes(cita._id)) {
-          return { ...cita, medico: medicoSeleccionado };
+          const medicoInfo = medicos.find(m => m._id === medicoSeleccionado);
+          return { ...cita, medico: medicoInfo };
         }
         return cita;
       });
@@ -123,7 +123,7 @@ const AdminDashboard = () => {
           <ul>
             {citasAsignadas.map(cita => (
               <li key={cita._id}>
-                {`${cita.paciente?.nombre || 'Paciente'} - ${cita.tipoCita} (Asignado a ID: ${cita.medico})`}
+                {`${cita.paciente?.nombre || 'Paciente'} - ${cita.tipoCita} (Asignado a: ${cita.medico?.nombre || 'Médico desconocido'})`}
               </li>
             ))}
           </ul>
