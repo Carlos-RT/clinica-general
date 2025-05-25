@@ -47,7 +47,7 @@ const RegisterForm = () => {
         rol: rol,
       };
 
-      await axios.post('http://localhost:5000/api/registrar', payload);
+      await axios.post('https://back-clinica-general.vercel.app/api/registrar', payload);
       setRegistroExitoso(true);
     } catch (error) {
       console.error('Error al registrar:', error);
